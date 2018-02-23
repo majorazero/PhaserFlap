@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <title>hello phaser!</title>
         <script src="//cdn.jsdelivr.net/phaser/2.5.0/phaser.min.js"></script>
+
     </head>
     <body>
 
@@ -18,7 +19,8 @@
         var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload,
                                                                 create: create,
                                                                 update: update,
-                                                                addRowOfBunnies: addRowOfBunnies });
+                                                                addRowOfBunnies: addRowOfBunnies,
+                                                                restartLevel: restartLevel});
 
         function preload () {
 
@@ -35,6 +37,7 @@
           //flying bunnies
           bunnies = game.add.group();
           bunnies.enableBody = true;
+
 
           //looping function (?)
           this.game.time.events.loop(1500,this.addRowOfBunnies,this);
@@ -61,14 +64,20 @@
           if(cursors.up.isDown){
         		//if up is pressed down, player is touchingthe ground
         		//hitPlatform probably returns true if player actually touching the background
-        		player.body.velocity.y =-300; //i guess jumping up is negative coordinates
+        		player.body.velocity.y =-150; //i guess jumping up is negative coordinates
             player.animations.stop();
           }
+
+          //game ends if collision happen
+          game.physics.arcade.overlap(player,bunnies,this.restartLevel,null,this);
         }
 
         function addBunny(x,y){
           //creates a bunny
           var bunny = game.add.sprite(x,y,'bun');
+          //animaton of bunny
+          bunny.animations.add('bleft',[0,1],5,true);
+          bunny.animations.play('bleft');
           //adds it to a bunny group
           bunnies.add(bunny);
           //obeyd arcade physics and makes it move at a certain rate
@@ -78,15 +87,21 @@
           bunny.checkWorldBounds = true;
           bunny.outOfWorldBoundsKill = true;
         }
+
         function addRowOfBunnies (){
           var hole = Math.floor(Math.random()*8) +1;
 
           for (var i =0; i < 20; i++){
-            if (i != hole && i != hole +1 ){
-              addBunny(400,i*60 + 20);
+            if (i != hole && i != hole +1 && i!= hole+2 ){
+              addBunny(800,i*60 + 20);
             }
           }
         }
+
+        function restartLevel(){
+          this.game.state.start(game.state.current);
+        }
+
 
     };
 
