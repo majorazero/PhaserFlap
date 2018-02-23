@@ -27,7 +27,7 @@
         function preload () {
 
             game.load.image('sky', 'assets/sky.png');
-            game.load.spritesheet('dude','assets/sillyDude.png',64,116);
+            game.load.spritesheet('dude','assets/FlyingSillySprite.png',128,64);
             game.load.spritesheet('bun','assets/baddie.png',32,32);
 
         }
@@ -58,15 +58,27 @@
          	game.physics.arcade.enable(player);
          	//player physics properties. gives him bounce?
          	player.body.bounce.y = 0.2;
-         	player.body.gravity.y = 300;
+         	player.body.gravity.y = 1000;
          	player.body.collideWorldBounds = true;
           player.body.mass = 0.2;
+          //animation
+          player.animations.add('fly',[0,1,4,5],10,true);
+          player.animations.add('puke',[1,2,3,4],10,true);
 
 
 
         }
 
         function update () {
+
+          //default player animations
+          if(player.position.y > 300){
+            player.animations.play('fly');
+          }
+          else{
+            player.animations.play('puke');
+          }
+
           //points update
           labelScore.text = score;
 
@@ -76,8 +88,8 @@
           if(cursors.up.isDown){
         		//if up is pressed down, player is touchingthe ground
         		//hitPlatform probably returns true if player actually touching the background
-        		player.body.velocity.y =-150; //i guess jumping up is negative coordinates
-            player.animations.stop();
+        		player.body.velocity.y =-250; //i guess jumping up is negative coordinates
+            //player.animations.play('puke');
           }
 
           //game ends if collision happen
