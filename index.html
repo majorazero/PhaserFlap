@@ -20,7 +20,9 @@
                                                                 create: create,
                                                                 update: update,
                                                                 addRowOfBunnies: addRowOfBunnies,
-                                                                restartLevel: restartLevel});
+                                                                restartLevel: restartLevel,
+                                                                addScore: addScore,
+                                                                loopScore: loopScore});
 
         function preload () {
 
@@ -31,8 +33,14 @@
         }
 
         function create () {
+
           //sky
           game.add.sprite(0,0,'sky');
+
+          //score (ordering matters)
+          score = 0;
+          labelScore = game.add.text(20,20,'0',
+                        {font: '30px Arial', fill: '000000'});
 
           //flying bunnies
           bunnies = game.add.group();
@@ -41,6 +49,7 @@
 
           //looping function (?)
           this.game.time.events.loop(1500,this.addRowOfBunnies,this);
+          this.game.time.events.add(3250,this.loopScore,this);
 
           //player dude
           player = game.add.sprite(64, game.world.height-250,'dude');
@@ -58,6 +67,9 @@
         }
 
         function update () {
+          //points update
+          labelScore.text = score;
+
           player.body.velocity.x = 0; //default movement if not controlled
           cursors = game.input.keyboard.createCursorKeys(); //keyboard event listener for phasor
 
@@ -101,7 +113,12 @@
         function restartLevel(){
           this.game.state.start(game.state.current);
         }
-
+        function addScore(){
+          score++;
+        }
+        function loopScore(){
+          this.game.time.events.loop(1500,this.addScore,this);
+        }
 
     };
 
