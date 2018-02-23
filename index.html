@@ -61,6 +61,7 @@
          	player.body.gravity.y = 1000;
          	player.body.collideWorldBounds = true;
           player.body.mass = 0.2;
+          player.anchor.setTo(-0.2,0.5);
           //animation
           player.animations.add('fly',[0,1,4,5],10,true);
           player.animations.add('puke',[1,2,3,4],10,true);
@@ -72,11 +73,16 @@
         function update () {
 
           //default player animations
-          if(player.position.y > 300){
-            player.animations.play('fly');
+          if(player.angle > 10 || player.position.y < 300){
+            player.animations.play('puke');
           }
           else{
-            player.animations.play('puke');
+            player.animations.play('fly');
+          }
+
+          //gives the player a downward angle to simulate falling down
+          if(player.angle <20){
+            player.angle++;
           }
 
           //points update
@@ -89,7 +95,9 @@
         		//if up is pressed down, player is touchingthe ground
         		//hitPlatform probably returns true if player actually touching the background
         		player.body.velocity.y =-250; //i guess jumping up is negative coordinates
-            //player.animations.play('puke');
+            //simutlates ascent, gives tween to smooth out animation of angle change
+            game.add.tween(player).to({angle:-20},200).start();
+
           }
 
           //game ends if collision happen
