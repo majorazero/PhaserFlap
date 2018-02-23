@@ -21,12 +21,20 @@
 
             game.load.image('sky', 'assets/sky.png');
             game.load.spritesheet('dude','assets/sillyDude.png',64,116);
+            game.load.spritesheet('bun','assets/baddie.png',32,32);
 
         }
 
         function create () {
           //sky
           game.add.sprite(0,0,'sky');
+
+          //flying bunnies
+          bunnies = game.add.group();
+          bunnies.enableBody = true;
+
+          //looping function (?)
+          this.game.time.events.loop(1500,addRowOfBunnies(),this);
 
           //player dude
           player = game.add.sprite(64, game.world.height-250,'dude');
@@ -39,7 +47,7 @@
          	player.body.collideWorldBounds = true;
           player.body.mass = 0.2;
 
-          
+
 
         }
 
@@ -52,6 +60,28 @@
         		//hitPlatform probably returns true if player actually touching the background
         		player.body.velocity.y =-300; //i guess jumping up is negative coordinates
             player.animations.stop();
+          }
+        }
+
+        function addBunny(x,y){
+          //creates a bunny
+          var bunny = game.add.sprite(x,y,'bun');
+          //adds it to a bunny group
+          bunnies.add(bunny);
+          //obeyd arcade physics and makes it move at a certain rate
+          game.physics.arcade.enable(bunny);
+          bunny.body.velocity.x =-200;
+          //kills if it exits screen
+          bunny.checkWorldBounds = true;
+          bunny.outOfWorldBoundsKill = true;
+        }
+        function addRowOfBunnies (){
+          var hole = Math.floor(Math.random()*8) +1;
+
+          for (var i =0; i < 20; i++){
+            if (i != hole && i != hole +1 ){
+              addBunny(400,i*60 + 20);
+            }
           }
         }
 
