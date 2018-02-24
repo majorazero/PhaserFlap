@@ -4,11 +4,16 @@
         <meta charset="UTF-8" />
         <title>hello phaser!</title>
         <script src="//cdn.jsdelivr.net/phaser/2.5.0/phaser.min.js"></script>
+        <script src="main.js"></script>
 
     </head>
     <body>
 
     <script type="text/javascript">
+
+    //making this global so it can interact with other js files
+    //risky since its security issue (hackable)
+    var game;
 
     window.onload = function() {
 
@@ -16,7 +21,7 @@
         //  Although it will work fine with this tutorial, it's almost certainly not the most current version.
         //  Be sure to replace it with an updated version before you start experimenting with adding your own code.
 
-        var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload,
+        game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload,
                                                                 create: create,
                                                                 update: update,
                                                                 addRowOfBunnies: addRowOfBunnies,
@@ -36,6 +41,7 @@
 
           //sky
           game.add.sprite(0,0,'sky');
+
 
           //score (ordering matters)
           score = 0;
@@ -130,9 +136,7 @@
           }
         }
 
-        function restartLevel(){
-          this.game.state.start(game.state.current);
-        }
+
         function addScore(){
           score++;
         }
