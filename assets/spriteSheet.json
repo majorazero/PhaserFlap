@@ -1,0 +1,84 @@
+{"frames": {
+
+"baddie.png":
+{
+	"frame": {"x":88,"y":0,"w":128,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":32},
+	"sourceSize": {"w":128,"h":32}
+},
+"diamond.png":
+{
+	"frame": {"x":24,"y":0,"w":32,"h":28},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":28},
+	"sourceSize": {"w":32,"h":28}
+},
+"dude.png":
+{
+	"frame": {"x":216,"y":0,"w":288,"h":48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":288,"h":48},
+	"sourceSize": {"w":288,"h":48}
+},
+"firstaid.png":
+{
+	"frame": {"x":56,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+"FlyingSillySprite.png":
+{
+	"frame": {"x":0,"y":648,"w":896,"h":64},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":896,"h":64},
+	"sourceSize": {"w":896,"h":64}
+},
+"platform.png":
+{
+	"frame": {"x":504,"y":0,"w":400,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":32},
+	"sourceSize": {"w":400,"h":32}
+},
+"sillyDude.png":
+{
+	"frame": {"x":0,"y":712,"w":896,"h":116},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":896,"h":116},
+	"sourceSize": {"w":896,"h":116}
+},
+"sky.png":
+{
+	"frame": {"x":0,"y":48,"w":800,"h":600},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
+	"sourceSize": {"w":800,"h":600}
+},
+"star.png":
+{
+	"frame": {"x":0,"y":0,"w":24,"h":22},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":22},
+	"sourceSize": {"w":24,"h":22}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "spriteSheet.png",
+	"format": "RGBA8888",
+	"size": {"w":904,"h":828},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:778be28e2c39e9178117d95f5a517eb3:ccd790df5f2933cefa6866beea4dbef9:ea5d22e715ea7a530878e244f6ee1006$"
+}
+}

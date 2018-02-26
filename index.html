@@ -21,7 +21,7 @@
         //  Although it will work fine with this tutorial, it's almost certainly not the most current version.
         //  Be sure to replace it with an updated version before you start experimenting with adding your own code.
 
-        game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload,
+        game = new Phaser.Game(800, 600, Phaser.CANVAS, '', { preload: preload,
                                                                 create: create,
                                                                 update: update,
                                                                 addRowOfBunnies: addRowOfBunnies,
@@ -30,8 +30,8 @@
                                                                 loopScore: loopScore});
 
         function preload () {
-
-            game.load.image('sky', 'assets/sky.png');
+            game.load.atlasJSONHash('sky','assets/spriteSheet.png','assets/spriteSheet.json','sky.png');
+            //game.load.atlasJSONHash('dude','assets/spriteSheet.png','assets/spriteSheet.json','FlyingSillySprite.png');
             game.load.spritesheet('dude','assets/FlyingSillySprite.png',128,64);
             game.load.spritesheet('bun','assets/baddie.png',32,32);
 
@@ -40,7 +40,7 @@
         function create () {
 
           //sky
-          game.add.sprite(0,0,'sky');
+          game.add.sprite(0,0,'sky','sky.png');
 
 
           //score (ordering matters)
@@ -58,7 +58,8 @@
           this.game.time.events.add(3250,this.loopScore,this);
 
           //player dude
-          player = game.add.sprite(64, game.world.height-250,'dude');
+          //player = game.add.sprite(64, game.world.height-250,'dude');
+          player = game.add.sprite(64,game.world.height-250,'dude','FlyingSillySprite.png');
           player.frame = 7;
          	//enables physics on player
          	game.physics.arcade.enable(player);
@@ -70,6 +71,7 @@
           player.anchor.setTo(-0.2,0.5);
           //animation
           player.animations.add('fly',[0,1,4,5],10,true);
+          //player.animations.add('fly',Phaser.Animation.generateFrameNames('fly',0,5),10,true);
           player.animations.add('puke',[1,2,3,4],10,true);
 
 
