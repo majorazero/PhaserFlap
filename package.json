@@ -1,0 +1,25 @@
+{
+  "name": "phaserflap",
+  "version": "1.0.0",
+  "description": "Written to figure out how an infinite runner type game works.",
+  "main": "index.html",
+  "dependencies": {
+    "http-server": "^0.11.1",
+    "phaser-ce": "^2.10.1",
+    "start": "^5.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/majorazero/PhaserFlap.git"
+  },
+  "author": "Daniel Hsu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/majorazero/PhaserFlap/issues"
+  },
+  "homepage": "https://github.com/majorazero/PhaserFlap#readme"
+}
